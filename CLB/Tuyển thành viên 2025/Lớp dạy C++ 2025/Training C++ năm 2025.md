@@ -6,6 +6,8 @@
 |                 | **2. Cấu trúc chương trình C++:** `#include`, `main()`, `std::cout`, `std::cin`.                       | **Ví dụ:** In ra tên, nhập và in ra một số nguyên.                  |
 |                 | **3. Biến & Kiểu dữ liệu:** `int`, `long long`, `double`, `char`, `bool`. Khai báo, gán giá trị.       | **Ví dụ:** Tính tổng, hiệu, tích, thương hai số nguyên và làm tròn. |
 |                 | **4. Phép toán:** Toán tử số học, quan hệ, logic.                                                      | **Bài tập:** Kiểm tra một số là chẵn hay lẻ.                        |
+|                 | 5. **Nói lại git/github**                                                                              | ...                                                                 |
+|                 |                                                                                                        |                                                                     |
 
 ---
 
