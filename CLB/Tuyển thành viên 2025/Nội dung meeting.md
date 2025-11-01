@@ -16,8 +16,9 @@
 	- Clean code 
 	- Chức năng
 	- Không lạc đề
+	- ...
 
 
 
-D24CQCN02-N NGUYEN MINH KHOI (project -> contest)
-N24DCCN135
+D24CQCN02-N NGUYEN MINH KHOI (project -> contest)  | N24DCCN135
+N25DCCN08x

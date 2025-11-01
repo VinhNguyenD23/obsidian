@@ -1,0 +1,21 @@
+Tuần trước:
+- Chưa task nào được hoàn thành 
+- user response format đang bị sai chưa tạo task để sửa
+Tuần này:
+- Docs:
+	- Delay viết docs 
+- Funding: 
+	- Hoàn thiện cơ bản về sinh mã QR và transaction
+	- Đang trong quá trình triển khai tạo webhook nhận request từ phía hệ thống thanh toán khác để bắt sự kiện
+	- Campaign đang trong quá trình review
+- Community:
+	- CRUD group đang trong quá trình review
+	- Log đang trong quá trình triển khai 
+	- CRUD problem trong discussion đang trong quá trình review
+	- CRUD Tag/Category đang trong quá trình triển khai
+	- Job fair chuyển từ Thanh -> Vinh (Thanh out dự án 1 thời gian để theo deadline trên trường và thi cuối kỳ)
+- Base:
+	- Admin:
+		- Ban/Unban user đang trong quá trình review
+		- Log đang trong quá trình triển khai 
+		-  List toàn bộ user cho admin
