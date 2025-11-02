@@ -1,7 +1,7 @@
-Tuần trước:
+### Tuần trước:
 - Chưa task nào được hoàn thành 
 - user response format đang bị sai chưa tạo task để sửa
-Tuần này:
+### Tuần này:
 - Docs:
 	- Delay viết docs 
 - Funding: 
