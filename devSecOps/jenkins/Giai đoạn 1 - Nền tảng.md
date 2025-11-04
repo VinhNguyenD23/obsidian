@@ -21,7 +21,7 @@ Chúng ta sẽ dùng `docker-compose.yml` vì nó dễ quản lý hơn `docker r
 
 YAML
 
-```
+```yaml
 # docker-compose.yml
 version: '3.8'
 
@@ -52,7 +52,7 @@ volumes:
     
     Bash
     
-    ```
+    ```bash
     docker-compose up -d
     ```
     
@@ -60,13 +60,13 @@ volumes:
     
     Bash
     
-    ```
+    ```bash
     docker logs jenkins-lts
     ```
     
     Bạn sẽ thấy một đoạn log giống như sau (copy đoạn mật khẩu dài):
     
-    ```
+    ```bash
     *************************************************************
     
     Jenkins initial admin password: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -102,14 +102,14 @@ Sau khi đăng nhập, giao diện Jenkins (còn gọi là "Blue Ocean" hoặc "
 
 Đây là "phòng điều khiển" của bạn. Các mục quan trọng nhất cần biết:
 
-|**Mục trong Manage Jenkins**|**Giải thích chi tiết**|
-|---|---|
-|**System Configuration**|(Cấu hình Hệ thống) Nơi bạn cài đặt các biến toàn cục (global), URL của Jenkins, cấu hình email server để gửi thông báo.|
-|**Security**|(Bảo mật) Quản lý ai có quyền làm gì (ví dụ: Matrix Security), ai được đăng nhập (ví dụ: dùng user/pass của Jenkins, hoặc LDAP/AD của công ty).|
-|**Manage Plugins**|(Quản lý Plugin) "Cửa hàng ứng dụng" của Jenkins. Đây là nơi bạn cài, gỡ, cập nhật plugin. **Bạn sẽ vào đây rất thường xuyên.**|
-|**Manage Nodes and Clouds**|(Quản lý Node/Cloud) Nơi bạn thêm/cấu hình các **Agents** (máy thực thi build). Đây là trái tim của Giai đoạn 4.|
-|**Manage Credentials**|(Quản lý Credentials) Nơi bạn lưu trữ an toàn các "bí mật" (mật khẩu, API key, SSH key). Đây là trái tim của Giai đoạn 5.|
-|**Tools**|(Cấu hình Công cụ) Nơi bạn chỉ định đường dẫn của các công cụ (ví dụ: JDK 11, Node.js 16, Maven) nếu bạn cài chúng _trực tiếp_ trên agent.|
+| **Mục trong Manage Jenkins** | **Giải thích chi tiết**                                                                                                                         |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **System Configuration**     | (Cấu hình Hệ thống) Nơi bạn cài đặt các biến toàn cục (global), URL của Jenkins, cấu hình email server để gửi thông báo.                        |
+| **Security**                 | (Bảo mật) Quản lý ai có quyền làm gì (ví dụ: Matrix Security), ai được đăng nhập (ví dụ: dùng user/pass của Jenkins, hoặc LDAP/AD của công ty). |
+| **Manage Plugins**           | (Quản lý Plugin) "Cửa hàng ứng dụng" của Jenkins. Đây là nơi bạn cài, gỡ, cập nhật plugin. **Bạn sẽ vào đây rất thường xuyên.**                 |
+| **Manage Nodes and Clouds**  | (Quản lý Node/Cloud) Nơi bạn thêm/cấu hình các **Agents** (máy thực thi build). Đây là trái tim của Giai đoạn 4.                                |
+| **Manage Credentials**       | (Quản lý Credentials) Nơi bạn lưu trữ an toàn các "bí mật" (mật khẩu, API key, SSH key). Đây là trái tim của Giai đoạn 5.                       |
+| **Tools**                    | (Cấu hình Công cụ) Nơi bạn chỉ định đường dẫn của các công cụ (ví dụ: JDK 11, Node.js 16, Maven) nếu bạn cài chúng _trực tiếp_ trên agent.      |
 
 ---
 
@@ -163,7 +163,7 @@ Bạn sẽ được đưa đến trang cấu hình job. Đây là các tab quan 
 
 Bash
 
-```
+```bash
 # In ra các biến môi trường để debug
 echo "Build đang chạy tại thư mục: $WORKSPACE"
 echo "Build ID là: $BUILD_NUMBER"

@@ -69,7 +69,7 @@ Chúng ta sẽ học cú pháp **Declarative Pipeline**. Nó có cấu trúc rõ
 
 Groovy
 
-```
+```groovy
 // Jenkinsfile
 pipeline { // 1. Block gốc: Bất cứ thứ gì cũng phải nằm trong đây
 
@@ -125,7 +125,7 @@ Bây giờ, hãy tạo một file tên `Jenkinsfile` (với chữ `J` viết hoa
 
 Groovy
 
-```
+```groovy
 // Jenkinsfile (Cú pháp Declarative)
 pipeline {
     // 1. CHỌN MÔI TRƯỜNG

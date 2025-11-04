@@ -74,7 +74,7 @@ Bạn sẽ thay `agent any` bằng `agent { label '...' }`.
 
 Groovy
 
-```
+```Groovy
 // Jenkinsfile
 pipeline {
     // Yêu cầu: "Chỉ chạy pipeline này trên một agent
@@ -132,7 +132,7 @@ Nhược điểm: Khó bảo trì. Nếu 100 dự án cần 100 phiên bản Nod
 
 Groovy
 
-```
+```Groovy
 // Jenkinsfile (Giai đoạn 4: Sử dụng Dynamic Docker Agent)
 pipeline {
     // 1. Chỉ định agent là một Docker container
@@ -207,7 +207,7 @@ Bạn đã thấy vấn đề ở trên: `stage('Build Docker Image')` cần l�
 
 Groovy
 
-```
+```Groovy
 // Jenkinsfile (Giai đoạn 4: Multi-Agent Pipeline)
 pipeline {
     // 1. Không dùng agent chung

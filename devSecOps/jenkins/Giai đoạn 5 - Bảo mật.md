@@ -60,7 +60,7 @@ Sau khi khối `withCredentials` kết thúc, các biến môi trường đó b�
 
 Groovy
 
-```
+```groovy
 stage('Push Docker') {
     steps {
         sh 'docker login -u vinh -p my-super-secret-password' // LỘ MẬT KHẨU!
@@ -75,7 +75,7 @@ Cách làm ĐÚNG (Best Practice) dùng withCredentials:
 
 Groovy
 
-```
+```groovy
 stage('Push Docker Image') {
     agent { label 'linux && docker' }
     steps {
@@ -143,7 +143,7 @@ jenkins-shared-library/
 
 Groovy
 
-```
+```groovy
 // vars/standardNodeBuild.groovy
 
 // Tên file 'standardNodeBuild' trở thành tên hàm

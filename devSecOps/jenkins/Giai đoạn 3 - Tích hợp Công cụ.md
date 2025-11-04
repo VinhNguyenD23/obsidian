@@ -97,7 +97,7 @@ Ví dụ Dockerfile cho app Node.js:
 
 Dockerfile
 
-```
+```Dockerfile
 # Stage 1: Build
 FROM node:18-alpine AS builder
 WORKDIR /app
@@ -153,7 +153,7 @@ Bạn phải đẩy chúng lên một Docker Registry.
 
 Groovy
 
-```
+```Groovy
 // Jenkinsfile (Giai đoạn 3: SonarQube + Docker)
 pipeline {
     agent any // Sẽ tối ưu ở Giai đoạn 4
