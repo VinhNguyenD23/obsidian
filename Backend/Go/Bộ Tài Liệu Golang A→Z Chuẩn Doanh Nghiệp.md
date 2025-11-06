@@ -1,4 +1,4 @@
-# Bộ Tài Liệu Golang A→Z Chuẩn Doanh Nghiệp
+# Mô tả
 
 Tài liệu này là cẩm nang đào tạo nội bộ, mục tiêu thống nhất tiêu chuẩn phát triển, vận hành và bảo mật cho các dự án sử dụng Golang trong môi trường microservices, cloud-native.
 
