@@ -31,7 +31,7 @@ Hãy tưởng tượng một lớp `Car`. Lớp `Car` cần các đối tư�
     
     Java
     
-    ```
+    ```Java
     public class Car {
         private Wheels wheels = new Wheels(); // Car tự tạo
         private Battery battery = new Battery(); // Car tự tạo
@@ -42,7 +42,7 @@ Hãy tưởng tượng một lớp `Car`. Lớp `Car` cần các đối tư�
     
     Java
     
-    ```
+    ```Java
     public class Car {
         private Wheels wheels;
         private Battery battery;
@@ -65,7 +65,7 @@ Có ba cách chính để tiêm phụ thuộc trong Spring:
     
     Java
     
-    ```
+    ```Java
     @Autowired
     private MyService myService;
     ```
@@ -78,7 +78,7 @@ Có ba cách chính để tiêm phụ thuộc trong Spring:
     
     Java
     
-    ```
+    ```Java
     private MyService myService;
     
     @Autowired
@@ -93,7 +93,7 @@ Có ba cách chính để tiêm phụ thuộc trong Spring:
     
     Java
     
-    ```
+    ```Java
     private final MyService myService;
     
     @Autowired // (Không bắt buộc nếu chỉ có 1 constructor)
@@ -129,7 +129,7 @@ Spring Boot không phải là một framework mới. Nó là một "lớp" (laye
     
     XML
     
-    ```
+    ```xml
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-web</artifactId>
@@ -220,7 +220,7 @@ Việc phân biệt rõ ràng các công nghệ này là rất quan trọng : 
     
     Java
     
-    ```
+    ```Java
     public interface UserRepository extends JpaRepository<User, Long> { }
     ```
     
@@ -313,7 +313,7 @@ Spring Data JPA cung cấp nhiều cách để truy vấn dữ liệu:
     
     - Java
         
-        ```
+        ```Java
         @Query("SELECT u FROM User u WHERE u.username LIKE CONCAT('%', :username, '%')")
         List<User> findByUsernameContaining(@Param("username") String username);
         ```
@@ -350,7 +350,7 @@ Spring Data JPA cung cấp nhiều cách để truy vấn dữ liệu:
         
         Java
         
-        ```
+        ```Java
         for (User user : users) {
             dto.setPostCount(user.getPosts().size()); // Truy cập LAZY
         }
@@ -378,7 +378,7 @@ Spring Data JPA cung cấp nhiều cách để truy vấn dữ liệu:
         
     - Java
         
-        ```
+        ```Java
         @Query("SELECT DISTINCT u FROM User u LEFT JOIN FETCH u.posts")
         List<User> findAllWithPosts();
         ```
@@ -391,7 +391,7 @@ Spring Data JPA cung cấp nhiều cách để truy vấn dữ liệu:
         
     - Java
         
-        ```
+        ```Java
         @EntityGraph(attributePaths = { "posts" })
         @Override
         List<User> findAll();
@@ -442,7 +442,7 @@ Spring Data JPA cung cấp nhiều cách để truy vấn dữ liệu:
             
             Java
             
-            ```
+            ```Java
             // Bên trong @Service @Transactional
             User user = userRepository.findById(1);
             List<String> postTitles = user.getPosts().stream().map(Post::getTitle).toList();
@@ -463,7 +463,7 @@ Spring Data JPA cung cấp nhiều cách để truy vấn dữ liệu:
         
         Java
         
-        ```
+        ```Java
         public interface UserSummary {
             String getUsername();
             int getPostCount(); // Spring Data hiểu điều này
@@ -476,7 +476,7 @@ Spring Data JPA cung cấp nhiều cách để truy vấn dữ liệu:
         
         Java
         
-        ```
+        ```Java
         public record UserSummary(String username, int postCount) {}
         // Trong Repository:
         @Query("SELECT new com.example.UserSummary(u.username, size(u.posts)) FROM User u WHERE u.id = :id")
@@ -633,7 +633,7 @@ Khi ứng dụng của bạn phát triển thành nhiều dịch vụ nhỏ (mic
         
         YAML
         
-        ```
+        ```yaml
         spring:
           cloud:
             gateway:
@@ -733,7 +733,7 @@ Các trạng thái của Circuit Breaker :   
     
     Java
     
-    ```
+    ```Java
     @Service
     public class ExternalCallService {
     
@@ -779,7 +779,7 @@ Các trạng thái của Circuit Breaker :   
     
     Java
     
-    ```
+    ```Java
     @RestControllerAdvice
     public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     
@@ -845,7 +845,7 @@ Các trạng thái của Circuit Breaker :   
     
     XML
     
-    ```
+    ```xml
     <configuration>
         <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">...</appender>
     
@@ -905,7 +905,7 @@ Một chiến lược kiểm thử tốt là nền tảng của các ứng dụn
         
         Java
         
-        ```
+        ```Java
         @SpringBootTest
         @Testcontainers // Báo cho JUnit 5 biết về Testcontainers
         class UserRepositoryIntegrationTest {
