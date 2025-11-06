@@ -485,3 +485,258 @@ function UserProfile({ userId }) {
   );
 }
 ```
+
+---
+### Phần 8: 🧭 Thêm React Router (Điều hướng)
+
+#### 1. React Router là gì?
+
+Trong một SPA, bạn không tải lại toàn bộ trang web khi người dùng nhấp vào một liên kết. Thay vào đó, React Router sẽ "đánh chặn" các thay đổi URL và chỉ render các component React tương ứng với URL đó.
+
+#### 2. Cài đặt
+
+Trong terminal của dự án `my-react-app`, chạy lệnh:
+
+Bash
+
+```
+npm install react-router-dom
+```
+
+#### 3. Thiết lập Cơ bản
+
+Cách thiết lập phổ biến nhất là sử dụng `BrowserRouter`. Chúng ta sẽ cấu hình nó trong file `src/main.jsx`.
+
+Cập nhật file `src/main.jsx`:
+
+JavaScript
+
+```
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom'; // 1. Import
+import App from './App.jsx';
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <BrowserRouter> {/* 2. Bọc toàn bộ <App> bằng BrowserRouter */}
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);
+```
+
+Điều này cho phép toàn bộ ứng dụng của bạn nhận biết được các thay đổi về URL.
+
+#### 4. Tạo các Trang (Pages)
+
+Bây giờ, hãy tạo một vài component để làm "trang".
+
+Tạo thư mục `src/pages`:
+
+- `src/pages/HomePage.jsx`:
+    
+    JavaScript
+    
+    ```
+    function HomePage() {
+      return (
+        <div>
+          <h1>Trang Chủ</h1>
+          <p>Chào mừng bạn đến với trang chủ!</p>
+        </div>
+      );
+    }
+    export default HomePage;
+    ```
+    
+- `src/pages/AboutPage.jsx`:
+    
+    JavaScript
+    
+    ```
+    function AboutPage() {
+      return (
+        <div>
+          <h1>Trang Giới Thiệu</h1>
+          <p>Đây là trang giới thiệu về chúng tôi.</p>
+        </div>
+      );
+    }
+    export default AboutPage;
+    ```
+    
+- `src/pages/NotFoundPage.jsx` (Rất quan trọng):
+    
+    JavaScript
+    
+    ```
+    function NotFoundPage() {
+      return <h1>404 - Không tìm thấy trang</h1>;
+    }
+    export default NotFoundPage;
+    ```
+    
+
+#### 5. Định nghĩa các Tuyến đường (Routes)
+
+Bây giờ, chúng ta sẽ cho React biết component nào sẽ hiển thị với URL nào. Chúng ta làm điều này trong `src/App.jsx`.
+
+Cập nhật `src/App.jsx`:
+
+JavaScript
+
+```
+import { Routes, Route, Link } from 'react-router-dom'; // 1. Import
+import HomePage from './pages/HomePage'; // 2. Import các trang
+import AboutPage from './pages/AboutPage';
+import NotFoundPage from './pages/NotFoundPage';
+import './App.css';
+
+function App() {
+  return (
+    <div>
+      {/* 3. Tạo thanh điều hướng (Navigation) */}
+      <nav>
+        <ul>
+          <li>
+            {/* Dùng <Link> thay vì <a> để không tải lại trang */}
+            <Link to="/">Trang Chủ</Link>
+          </li>
+          <li>
+            <Link to="/about">Giới Thiệu</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <hr />
+
+      {/* 4. Nơi nội dung trang sẽ được render */}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        
+        {/* Route "bắt tất cả" cho trang 404 */}
+        <Route path="*" element={<NotFoundPage />} /> 
+      </Routes>
+    </div>
+  );
+}
+
+export default App;
+```
+
+**Giải thích:**
+
+- **`<Link to="...">`**: Đây là cách bạn tạo liên kết. Nó giống như thẻ `<a>`, nhưng nó ngăn trình duyệt tải lại trang và chỉ thay đổi URL, cho phép React Router xử lý phần còn lại.
+    
+- **`<Routes>`**: Bọc tất cả các định nghĩa tuyến đường của bạn.
+    
+- **`<Route path="..." element={...} />`**: Đây là phần cốt lõi.
+    
+    - `path="/"`: Khi URL là `/` (trang chủ), render `element` là `<HomePage />`.
+        
+    - `path="/about"`: Khi URL là `/about`, render `element` là `<AboutPage />`.
+        
+    - `path="*"`: Dấu `*` hoạt động như một "wildcard". Nếu không có `path` nào ở trên khớp, nó sẽ khớp với `path="*"` và render `<NotFoundPage />`.
+        
+
+Bây giờ, hãy chạy `npm run dev` và thử nhấp qua lại giữa "Trang Chủ" và "Giới Thiệu". Bạn sẽ thấy nội dung thay đổi ngay lập tức mà không cần tải lại trang!
+
+---
+
+### 💡 Mẹo Nâng cao: Layout Chung (Nested Routes)
+
+Trong thực tế, bạn thường muốn thanh điều hướng (navbar) và chân trang (footer) xuất hiện trên _mọi_ trang. Chúng ta có thể dùng **Nested Routes** (Tuyến đường lồng nhau).
+
+1. Tạo Layout Component:
+    
+    Tạo src/components/Layout.jsx:
+    
+    JavaScript
+    
+    ```
+    import { Outlet, Link } from 'react-router-dom';
+    
+    function Layout() {
+      return (
+        <div>
+          {/* 1. Navbar cố định */}
+          <nav>
+            <ul>
+              <li><Link to="/">Trang Chủ</Link></li>
+              <li><Link to="/about">Giới Thiệu</Link></li>
+            </ul>
+          </nav>
+    
+          <hr />
+    
+          {/* 2. Đây là nơi các trang con (HomePage, AboutPage) sẽ được render */}
+          <main>
+            <Outlet /> 
+          </main>
+    
+          {/* 3. Footer cố định (ví dụ) */}
+          <footer>
+            <p>© 2025 Bản quyền thuộc về tôi</p>
+          </footer>
+        </div>
+      );
+    }
+    
+    export default Layout;
+    ```
+    
+    **`<Outlet />`** là một component đặc biệt của React Router, nó đóng vai trò là "chỗ giữ chỗ" cho các route con.
+    
+2. Cập nhật App.jsx:
+    
+    Bây giờ chúng ta lồng các route kia vào bên trong một route Layout.
+    
+    JavaScript
+    
+    ```
+    import { Routes, Route } from 'react-router-dom';
+    import Layout from './components/Layout'; // 1. Import Layout
+    import HomePage from './pages/HomePage';
+    import AboutPage from './pages/AboutPage';
+    import NotFoundPage from './pages/NotFoundPage';
+    import './App.css';
+    
+    function App() {
+      return (
+        // Chỉ cần <Routes> ở đây
+        <Routes>
+          {/* 2. Tạo một route cha sử dụng Layout */}
+          <Route path="/" element={<Layout />}>
+            {/* 3. Các route con sẽ render vào <Outlet> của Layout */}
+    
+            {/* path="/" + index=true nghĩa là đây là component mặc định */}
+            <Route index element={<HomePage />} /> 
+    
+            <Route path="about" element={<AboutPage />} />
+    
+            {/* Trang 404 cũng nên nằm trong Layout */}
+            <Route path="*" element={<NotFoundPage />} /> 
+          </Route>
+    
+          {/* (Nếu bạn có các trang không dùng Layout, ví dụ trang Login, 
+               bạn có thể định nghĩa chúng bên ngoài) */}
+          {/* <Route path="/login" element={<LoginPage />} /> */}
+        </Routes>
+      );
+    }
+    
+    export default App;
+    ```
+    
+
+**Giải thích:**
+
+- `path="/" element={<Layout />}`: Route cha này nói rằng bất cứ URL nào bắt đầu bằng `/` (về cơ bản là mọi URL) sẽ sử dụng `Layout`.
+    
+- `<Route index ... />`: Thuộc tính `index` thay cho `path="/"`. Nó cho biết "Đây là component sẽ render khi URL khớp _chính xác_ với route cha (`/`)".
+    
+- `<Route path="about" ... />`: Lưu ý không có `/` ở trước. Path này được nối vào path của cha, thành `/about`.
+    
