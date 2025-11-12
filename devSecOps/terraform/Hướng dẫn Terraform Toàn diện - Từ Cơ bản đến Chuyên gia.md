@@ -303,7 +303,7 @@ Chúng ta sẽ tái cấu trúc ví dụ Beginner thành các module có thể t
 
 - **Cấu trúc thư mục mới**
 ```
-    /terraform-intermediate
+/terraform-intermediate
 |-- /modules
 | |-- /vpc
 | | |-- main.tf
