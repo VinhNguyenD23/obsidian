@@ -67,7 +67,7 @@ Kịch bản: Tạo một môi trường web cơ bản, bao gồm VPC (mạng ri
 
 Terraform
 
-```yml
+```json
 # main.tf
 
 # 1. Terraform Settings Block
