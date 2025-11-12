@@ -850,7 +850,7 @@ Hãy bắt đầu.
 |Alice|77000.00|
 
 *   *Ví dụ 3: DELETE* 
-    ```sql
+```sql
     -- Xóa nhân viên 'Frank'
     DELETE FROM employees
     WHERE name = 'Frank'
