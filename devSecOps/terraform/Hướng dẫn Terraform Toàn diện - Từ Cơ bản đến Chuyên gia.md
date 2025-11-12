@@ -323,7 +323,7 @@ Chúng ta sẽ tái cấu trúc ví dụ Beginner thành các module có thể t
     
     Terraform
     
-    ```yml
+    ```bash
     # modules/vpc/variables.tf
     variable "vpc_cidr" {
       description = "CIDR block for the VPC"
@@ -340,7 +340,7 @@ Chúng ta sẽ tái cấu trúc ví dụ Beginner thành các module có thể t
     
     Terraform
     
-    ```yml
+    ```bash
     # modules/vpc/main.tf
     resource "aws_vpc" "main" {
       cidr_block = var.vpc_cidr
@@ -358,7 +358,7 @@ Chúng ta sẽ tái cấu trúc ví dụ Beginner thành các module có thể t
     
     Terraform
     
-    ```yml
+    ```bash
     # modules/vpc/outputs.tf
     output "vpc_id" {
       description = "The ID of the created VPC"
@@ -375,7 +375,7 @@ Chúng ta sẽ tái cấu trúc ví dụ Beginner thành các module có thể t
     
     Terraform
     
-    ```yml
+    ```bash
     # modules/ec2_instance/main.tf
     variable "subnet_id" { type = string }
     variable "vpc_id" { type = string }
@@ -411,7 +411,7 @@ Chúng ta sẽ tái cấu trúc ví dụ Beginner thành các module có thể t
     
     Terraform
     
-    ```yml
+    ```bash
     # main.tf (Root)
     
     terraform {
@@ -465,7 +465,7 @@ Chúng ta sẽ tái cấu trúc ví dụ Beginner thành các module có thể t
     
     Terraform
     
-    ```yml
+    ```bash
     # variables.tf (Root)
     variable "region" { default = "us-east-1" }
     variable "instance_type" { default = "t2.micro" }
@@ -477,7 +477,7 @@ Chúng ta sẽ tái cấu trúc ví dụ Beginner thành các module có thể t
     
     Terraform
     
-    ```yml
+    ```bash
     # terraform.tfvars
     # Override defaults if needed
     instance_type = "t3.micro"
@@ -487,7 +487,7 @@ Chúng ta sẽ tái cấu trúc ví dụ Beginner thành các module có thể t
     
     Terraform
     
-    ```yml
+    ```bash
     # outputs.tf (Root)
     output "web_server_ip" {
       description = "Public IP of the web server"
@@ -615,7 +615,7 @@ Kịch bản: Tự động hóa môi trường `prod` (theo cấu trúc thư m�
     
     Terraform
     
-    ```yml
+    ```bash
     # envs/prod/main.tf
     terraform {
       backend "s3" {
@@ -639,7 +639,7 @@ Kịch bản: Tự động hóa môi trường `prod` (theo cấu trúc thư m�
     
     YAML
     
-    ```yml
+    ```bash
     #.github/workflows/terraform-prod.yml
     name: 'Terraform CD - Production'
     
@@ -827,7 +827,7 @@ Kịch bản: Tạo GKE Cluster, lấy credentials, deploy Nginx (Helm), và ki�
     
     Terraform
     
-    ```yml
+    ```bash
     # 0. Setup providers
     terraform {
       required_providers {
@@ -894,7 +894,7 @@ Kịch bản: Tạo GKE Cluster, lấy credentials, deploy Nginx (Helm), và ki�
     
     Đoạn mã
     
-    ```yml
+    ```bash
     # policy/gke_monitoring.rego
     package terraform.analysis
     
@@ -918,7 +918,7 @@ Kịch bản: Tạo GKE Cluster, lấy credentials, deploy Nginx (Helm), và ki�
     
     Bash
     
-    ```yml
+    ```bash
     #!/bin/bash
     set -e
     
