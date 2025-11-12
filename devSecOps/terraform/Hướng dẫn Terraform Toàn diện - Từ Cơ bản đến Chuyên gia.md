@@ -918,7 +918,7 @@ Kịch bản: Tạo GKE Cluster, lấy credentials, deploy Nginx (Helm), và ki�
     
     Bash
     
-    ```bash
+```bash
     #!/bin/bash
     set -e
     
@@ -950,7 +950,7 @@ Kịch bản: Tạo GKE Cluster, lấy credentials, deploy Nginx (Helm), và ki�
     # if; then
     #   terraform apply tfplan.bin
     # fi
-    ```
+```
     
 
 ### 5. Mô tả đầu ra mong đợi (Sau khi `apply`)
