@@ -301,8 +301,7 @@ resource "aws_instance" "web_server" {
 
 Chúng ta sẽ tái cấu trúc ví dụ Beginner thành các module có thể tái sử dụng.
 
-- **Cấu trúc thư mục mới
-- 
+- **Cấu trúc thư mục mới**
 ```
     /terraform-intermediate
 |-- /modules
