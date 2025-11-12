@@ -1001,20 +1001,20 @@ Kịch bản: Tạo GKE Cluster, lấy credentials, deploy Nginx (Helm), và ki�
 
 ### A. Terraform CLI Cheatsheet
 
-|**Lệnh**|**Mục đích**|**Cảnh báo / Best Practice**|
-|---|---|---|
-|`terraform init`|Khởi tạo backend, tải providers, tải modules.|Chạy mỗi khi có thay đổi `backend` hoặc `provider` (hoặc clone repo mới).|
-|`terraform validate`|Kiểm tra cú pháp (HCL) cục bộ.|Nhanh. Chạy trong pre-commit hook. Không kiểm tra logic.|
-|`terraform fmt`|Định dạng code theo chuẩn HCL.|Chạy `fmt -recursive` để đảm bảo tính nhất quán.|
-|`terraform plan`|Hiển thị "trạng thái mong muốn" vs "hiện tại".|**Luôn luôn** kiểm tra `plan` kỹ. `plan -out=tfplan.bin` để lưu plan.|
-|`terraform apply`|Áp dụng thay đổi.|`apply tfplan.bin` (an toàn hơn) hoặc `apply -auto-approve` (nguy hiểm, chỉ dùng trong CI/CD).|
-|`terraform destroy`|Xóa _tất cả_ tài nguyên trong state.|Cực kỳ nguy hiểm. Luôn `plan` trước khi `destroy`.|
-|`terraform import`|_Mang_ tài nguyên (đã tạo bằng tay) vào state.|`terraform import aws_instance.web i-12345`. Dùng để "sửa chữa", không tạo code.|
-|`terraform state`|Các lệnh "phẫu thuật" state (VD: `list`, `mv`, `rm`).|**CỰC KỲ NGUY HIỂM.** `state rm` xóa khỏi state, _không_ xóa tài nguyên thực. Dùng khi state bị hỏng.|
-|`terraform workspace`|Quản lý các state file khác nhau cho cùng 1 code.|Tránh dùng cho `dev/prod`. Dùng cho feature-branch.|
-|`terraform output`|Hiển thị giá trị `output` từ state.|`terraform output web_server_ip` (tiện lợi).|
-|`terraform taint`|Đánh dấu 1 resource là "hỏng" (tainted).|(Đã cũ) Buộc Terraform `destroy` và `recreate` resource đó ở lần `apply` tiếp theo.|
-|`terraform apply -replace=...`|Thay thế `taint`.|`apply -replace=aws_instance.web`. An toàn hơn.|
+| **Lệnh**                       | **Mục đích**                                          | **Cảnh báo / Best Practice**                                                                          |
+| ------------------------------ | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `terraform init`               | Khởi tạo backend, tải providers, tải modules.         | Chạy mỗi khi có thay đổi `backend` hoặc `provider` (hoặc clone repo mới).                             |
+| `terraform validate`           | Kiểm tra cú pháp (HCL) cục bộ.                        | Nhanh. Chạy trong pre-commit hook. Không kiểm tra logic.                                              |
+| `terraform fmt`                | Định dạng code theo chuẩn HCL.                        | Chạy `fmt -recursive` để đảm bảo tính nhất quán.                                                      |
+| `terraform plan`               | Hiển thị "trạng thái mong muốn" vs "hiện tại".        | **Luôn luôn** kiểm tra `plan` kỹ. `plan -out=tfplan.bin` để lưu plan.                                 |
+| `terraform apply`              | Áp dụng thay đổi.                                     | `apply tfplan.bin` (an toàn hơn) hoặc `apply -auto-approve` (nguy hiểm, chỉ dùng trong CI/CD).        |
+| `terraform destroy`            | Xóa _tất cả_ tài nguyên trong state.                  | Cực kỳ nguy hiểm. Luôn `plan` trước khi `destroy`.                                                    |
+| `terraform import`             | _Mang_ tài nguyên (đã tạo bằng tay) vào state.        | `terraform import aws_instance.web i-12345`. Dùng để "sửa chữa", không tạo code.                      |
+| `terraform state`              | Các lệnh "phẫu thuật" state (VD: `list`, `mv`, `rm`). | **CỰC KỲ NGUY HIỂM.** `state rm` xóa khỏi state, _không_ xóa tài nguyên thực. Dùng khi state bị hỏng. |
+| `terraform workspace`          | Quản lý các state file khác nhau cho cùng 1 code.     | Tránh dùng cho `dev/prod`. Dùng cho feature-branch.                                                   |
+| `terraform output`             | Hiển thị giá trị `output` từ state.                   | `terraform output web_server_ip` (tiện lợi).                                                          |
+| `terraform taint`              | Đánh dấu 1 resource là "hỏng" (tainted).              | (Đã cũ) Buộc Terraform `destroy` và `recreate` resource đó ở lần `apply` tiếp theo.                   |
+| `terraform apply -replace=...` | Thay thế `taint`.                                     | `apply -replace=aws_instance.web`. An toàn hơn.                                                       |
 
 ### B. Cấu trúc Project Mẫu (Enterprise-Grade)
 

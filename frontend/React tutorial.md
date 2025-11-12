@@ -539,7 +539,7 @@ Tạo thư mục `src/pages`:
     
     JavaScript
     
-    ```
+    ```JavaScript
     function HomePage() {
       return (
         <div>
@@ -555,7 +555,7 @@ Tạo thư mục `src/pages`:
     
     JavaScript
     
-    ```
+    ```JavaScript
     function AboutPage() {
       return (
         <div>
@@ -571,7 +571,7 @@ Tạo thư mục `src/pages`:
     
     JavaScript
     
-    ```
+    ```JavaScript
     function NotFoundPage() {
       return <h1>404 - Không tìm thấy trang</h1>;
     }
@@ -587,7 +587,7 @@ Cập nhật `src/App.jsx`:
 
 JavaScript
 
-```
+```JavaScript
 import { Routes, Route, Link } from 'react-router-dom'; // 1. Import
 import HomePage from './pages/HomePage'; // 2. Import các trang
 import AboutPage from './pages/AboutPage';
@@ -656,7 +656,7 @@ Trong thực tế, bạn thường muốn thanh điều hướng (navbar) và ch
     
     JavaScript
     
-    ```
+    ```JavaScript
     import { Outlet, Link } from 'react-router-dom';
     
     function Layout() {
@@ -696,7 +696,7 @@ Trong thực tế, bạn thường muốn thanh điều hướng (navbar) và ch
     
     JavaScript
     
-    ```
+    ```JavaScript
     import { Routes, Route } from 'react-router-dom';
     import Layout from './components/Layout'; // 1. Import Layout
     import HomePage from './pages/HomePage';
